@@ -27,7 +27,7 @@ response = client.chat.completions.create(
   model="gpt-4o-mini",
   messages=[
     {"role": "system", "content": sys_msg},
-    {"role": "user", "content": "Help me learn to Dutch."}
+    {"role": "user", "content": "Help me learn to speak Dutch."}
   ]
 )
 
