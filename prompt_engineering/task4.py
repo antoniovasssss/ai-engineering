@@ -1,8 +1,10 @@
-"""
-- Craft a `prompt` that asks the model to generate a poem about ChatGPT while ensuring that it is written in basic English that a child can understand.
-- Get the `response` using the `get_response()` function.
+""" 
+Write a conditional prompt that:
 
+- summarizes text only if it is in English
+- otherwise says: "Unsupported language"
 """
+
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -23,13 +25,14 @@ client = OpenAI(api_key=api_key)
 def get_response(prompt):
     response = client.chat.completions.create(
     model="gpt-4o-mini",
-    messages=[{"role": "user", "content":prompt}],
-    temperature= 0
+    messages=[{"role": "user", "content":prompt}]
     )
     return response.choices[0].message.content
 
+text = "I love python."
 
-prompt = "Write a short poem about ChatGPT using simple and basic English that a young child can understand."
-
+prompt = f"""Summerize text only if it is in English if it is not in English, respond with:"Unsupported language".
+ ```{text}```"""
+ 
 response = get_response(prompt)
 print(response)

@@ -1,8 +1,3 @@
-"""
-- Craft a `prompt` that asks the model to generate a poem about ChatGPT while ensuring that it is written in basic English that a child can understand.
-- Get the `response` using the `get_response()` function.
-
-"""
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -23,13 +18,15 @@ client = OpenAI(api_key=api_key)
 def get_response(prompt):
     response = client.chat.completions.create(
     model="gpt-4o-mini",
-    messages=[{"role": "user", "content":prompt}],
-    temperature= 0
+    messages=[{"role": "user", "content":prompt}]
     )
     return response.choices[0].message.content
 
+text = "Think about climate change"
 
-prompt = "Write a short poem about ChatGPT using simple and basic English that a young child can understand."
+prompt = f"""Explain what climate change is in one paragraph
+```{text}```
+"""
 
 response = get_response(prompt)
 print(response)

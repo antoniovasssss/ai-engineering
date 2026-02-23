@@ -1,8 +1,8 @@
 """
-- Craft a `prompt` that asks the model to generate a poem about ChatGPT while ensuring that it is written in basic English that a child can understand.
-- Get the `response` using the `get_response()` function.
+Craft a prompt that completes the given story with only two paragraphs in the style of Shakespeare; use f-string, and delimit the story with triple backticks (```).
 
 """
+
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -23,13 +23,18 @@ client = OpenAI(api_key=api_key)
 def get_response(prompt):
     response = client.chat.completions.create(
     model="gpt-4o-mini",
-    messages=[{"role": "user", "content":prompt}],
-    temperature= 0
+    messages=[{"role": "user", "content":prompt}]
     )
     return response.choices[0].message.content
 
+story ="Explain JavaScript that targets beginners in 5 sentences"
 
-prompt = "Write a short poem about ChatGPT using simple and basic English that a young child can understand."
+# Create a prompt that completes the story
+prompt = f"""Complete the story delimited by triple backticks with only two paragraphs using the style of Shakespeare. 
+ ```{story}```"""
 
+# Get the generated response 
 response = get_response(prompt)
-print(response)
+
+print("\n Original story: \n", story)
+print("\n Generated story: \n", response)
