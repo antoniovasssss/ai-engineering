@@ -5,10 +5,9 @@
 - Return the first `n` elements in `distances_sorted`.
 """
 import os
-from turtle import distance
+from scipy.spatial import distance
 from openai import OpenAI
 from dotenv import load_dotenv
-from scipy.spatial import distance
 
 load_dotenv()
 
