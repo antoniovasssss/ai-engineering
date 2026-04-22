@@ -13,6 +13,7 @@ from openai import OpenAI
 # Initialize the Pinecone client
 load_dotenv(override=True)
 openai_api_key = os.getenv("OPENAI_API_KEY")
+
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
 # Create your Pinecone index
