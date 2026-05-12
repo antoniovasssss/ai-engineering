@@ -6,8 +6,6 @@
 import os
 from dotenv import load_dotenv
 from pinecone import Pinecone
-from pinecone import ServerlessSpec
-from openai import OpenAI
 
 # Initialize the Pinecone client
 load_dotenv(override=True)
